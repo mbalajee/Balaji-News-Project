@@ -6,6 +6,4 @@ interface NewsDataSource {
 
     fun getNews(country: String, category: String, callBack: DataSourceCallBack<List<Article>>)
     fun saveNews(list: List<Article>)
-
-
 }

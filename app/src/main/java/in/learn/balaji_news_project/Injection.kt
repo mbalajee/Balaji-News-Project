@@ -8,7 +8,9 @@ import android.content.Context
 object Injection {
 
     fun provideNewsRepository(context: Context): NewsRepository {
+        // TODO: Create DB for local data source
 //        val database = ToDoDatabase.getInstance(context)
+
         return NewsRepository(NewsLocalSource(), NewsRemoteSource())
     }
 }

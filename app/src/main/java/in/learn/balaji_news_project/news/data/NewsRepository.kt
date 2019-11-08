@@ -6,10 +6,12 @@ class NewsRepository(private val localSource: NewsLocalSource, private val remot
 
     override fun getNews(country: String, category: String, callBack: DataSourceCallBack<List<Article>>) {
 
+        // Show the cached news
         localSource.getNews(country, category) { articles: List<Article>?, _: String? ->
             callBack(articles ?: listOf(), null)
         }
 
+        // Refresh Room
         remoteSource.getNews(country, category) { articles: List<Article>?, error: String? ->
             if (articles != null) {
                 localSource.saveNews(articles)
